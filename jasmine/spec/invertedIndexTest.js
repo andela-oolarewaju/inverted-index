@@ -1,5 +1,4 @@
 "use strict";
-
 describe("IndexFile", function() {
 
 	describe("Read book data", function() {
@@ -27,13 +26,14 @@ describe("IndexFile", function() {
 
 describe("Populate Index", function() {
 	var booksContent = booksJson("books.json");
-  var indexCopy = new Index();
-  var getIndex = indexCopy.createIndex;
-  var getIndexResult= getIndex("books.json");
 
-	it("it verifies that index is created", function() {
+	it("should ensure that index is created", function() {
         expect(getIndex).toBeDefined();   
 	});
+
+  it("should ensure that getIndexResult is created", function() {
+    expect(getIndexResult).toBeDefined();
+  })
 
   it("should ensure that index is correct", function() {
     expect(getIndexResult.hobbit).toEqual([1]);

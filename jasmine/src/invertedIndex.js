@@ -1,4 +1,3 @@
-
 //Olarewaju Oreoluwa. Checkpoint 1
 //function to read Json file
 function booksJson(filePath) {
@@ -14,10 +13,8 @@ function booksJson(filePath) {
   });
   return booksContent;
 }
-
 //create index function that'll be called by other functions
 var Index = function(){};
-
 
 Index.prototype.createIndex = function(filePath){
   var result = {};
@@ -82,11 +79,5 @@ Index.prototype.searchIndex= function(terms){
       }
     }
   }
-   
   return searchResult;
 }
-
-
-
-
-
