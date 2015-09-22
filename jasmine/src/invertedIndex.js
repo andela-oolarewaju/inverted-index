@@ -8,7 +8,7 @@ Index.prototype.booksJson = function(filePath) {
   $.ajax({
     'url': filePath,
     'dataType': "json",
-    //i did this so that script finishes running before next statement can run(get json)
+    // script finishes running before next statement
     'async': false, 
     'success': function(data) {
       booksContent = data;
@@ -23,17 +23,15 @@ Index.prototype.createIndex = function(filePath){
   var booksContent = this.booksJson(filePath);
   for(var a = 0; a < booksContent.length; a++){ 
     for(var b in booksContent[a]){
-      //if I console log here, it prints it in basic text
-      //after spliting, it returns it in an array
+      //it returns it in an array
       var split = booksContent[a][b].split(' ');
-      //while iterating, returns each word after every empty space
+      //return each word after every empty space
       for(var c = 0; c < split.length; c++){ 
-        //i removed every punctuation here
+        //remove every punctuation here
         if(split[c].slice(-1) === '.' || split[c].slice(-1) === ',' || split[c].slice(-1) === ':'){
           //notice all punctuations come as last character in the word they're attached to, so i removed
           split[c] = split[c].slice(0, -1);
         }
-        //if where I sliced is also contained in result then set them to resultArr
         if(result.hasOwnProperty(split[c]) ) {
           var resultArr = result[split[c]];
           //a is incrementing by 1 each time 
