@@ -28,10 +28,8 @@ Index.prototype.createIndex = function(filePath){
       //return each word after every empty space
       for(var c = 0; c < split.length; c++){ 
         //remove every punctuation here
-        if(split[c].slice(-1) === '.' || split[c].slice(-1) === ',' || split[c].slice(-1) === ':'){
-          //notice all punctuations come as last character in the word they're attached to, so i removed
-          split[c] = split[c].slice(0, -1);
-        }
+        var re = /[.,:]/g
+        split[c] = split[c].replace(re, "");
         if(result.hasOwnProperty(split[c]) ) {
           var resultArr = result[split[c]];
           //a is incrementing by 1 each time 
@@ -52,10 +50,8 @@ Index.prototype.createIndex = function(filePath){
   }
   return result;
 };
-//instance of Index
-var indexCopy = new Index();
 //gets the index from createIndex method
-var getIndex = indexCopy.createIndex("books.json");
+var getIndex = Index.prototype.createIndex("books.json");
 
 //method to search index
 Index.prototype.searchIndex= function(terms){
